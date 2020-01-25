@@ -1,23 +1,33 @@
 import axios from 'axios';
 
 const fetchChatacters = async (page) => {
-  const URL = 'https://swapi.co/api/';
+  const URL = 'https://swapi.co/api';
 
-  await axios.get(`${URL}/people`, {
-    params: {
-      page,
-    },
-  })
-    .then(response => response)
-    .catch(error => console.error(error));
+  try {
+    const { data } = await axios.get(`${URL}/people`, {
+      params: {
+        page,
+        format: 'json',
+      },
+    });
+
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 const fetchStarships = async (id) => {
-  const URL = 'https://swapi.co/api/';
+  const URL = 'https://swapi.co/api';
 
-  await axios.get(`${URL}/${id}`)
-    .then(response => response)
-    .catch(error => console.error(error));
+  try {
+    const { data } = await axios.get(`${URL}/starchips/${id}`, {
+    });
+
+    return data;
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 
