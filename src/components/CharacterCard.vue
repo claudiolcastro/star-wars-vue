@@ -146,7 +146,7 @@ export default {
     border: 1px solid $black;
     border-radius: 3px;
     color: $white;
-    min-height: 440px;
+    min-height: 370px;
     height: auto;
     padding: 10px 0;
     width: 250px;

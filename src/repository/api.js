@@ -7,7 +7,6 @@ const fetchChatacters = async (page) => {
     const { data } = await axios.get(`${URL}/people`, {
       params: {
         page,
-        format: 'json',
       },
     });
 

@@ -9,6 +9,8 @@
         <CharacterCard :character="character" />
       </li>
     </ul>
+
+    <Paginator :next="nextPage" :previous="previousPage" />
   </div>
 </template>
 
@@ -16,6 +18,7 @@
 import { mapState, mapActions } from 'vuex';
 
 import CharacterCard from '../components/CharacterCard.vue';
+import Paginator from '../components/Paginator.vue';
 
 import { fetchChatacters } from '../repository/api';
 
@@ -24,10 +27,18 @@ export default {
 
   components: {
     CharacterCard,
+    Paginator,
+  },
+
+  data() {
+    return {
+      nextPage: null,
+      previousPage: null,
+    };
   },
 
   computed: {
-    ...mapState(['characters']),
+    ...mapState(['characters', 'page']),
   },
 
   methods: {
@@ -37,13 +48,17 @@ export default {
     ]),
 
     async loadCharacters(page) {
-      const { results } = await fetchChatacters(page);
+      const { results, next, previous } = await fetchChatacters(page);
       this.setCharacters(results);
+      this.nextPage = next || '';
+      this.previousPage = previous || '';
     },
   },
 
   created() {
-    this.loadCharacters(1);
+    this.setPage(this.$route.params.page || 1);
+    this.loadCharacters(this.page);
+    console.log('Created! ', this.page);
   },
 };
 </script>
@@ -76,6 +91,10 @@ export default {
         float: left;
         margin: 15px 0 0 15px;
       }
+    }
+
+    .paginator {
+      margin-top: 20px;
     }
   }
 </style>
