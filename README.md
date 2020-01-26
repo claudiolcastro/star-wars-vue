@@ -1,26 +1,20 @@
-# star-wars-vue
+# STAR WARS CHARACTERS | VUE
 
-## Project setup
+## Iniciar o projeto
+Na raiz do proejto rode o seguinte comando para instalar as dependecias do projeto
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
+yarn install ou npm install
 ```
 
-### Compiles and minifies for production
+Após instaladas as dependencias, rode o comando para iniciar o projeto:
 ```
-yarn run build
+yarn run dev
 ```
+O projeto ficará disponivel em: https://localhost:8080
 
-### Lints and fixes files
-```
-yarn run lint
-```
 
-### Run your unit tests
+### Para rodar os testes unitarios
+Rode:
 ```
 yarn run test:unit
 ```

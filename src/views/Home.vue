@@ -4,6 +4,8 @@
     <h1>Star Wars Characters</h1>
     <img style="transform: rotate(270deg)" src="https://img.icons8.com/color/48/000000/lightsaber.png">
 
+    <Paginator class="pg-top" :next="nextPage" :previous="previousPage" />
+
     <ul class="characters-list">
       <li v-for="(character, index) in characters" :key="index">
         <CharacterCard :character="character" />
@@ -67,6 +69,7 @@ export default {
   .home {
     background-color: #424242;
     padding-bottom: 30px;
+    min-height: 500px;
     width: 100%;
 
     h1 {
@@ -95,6 +98,14 @@ export default {
 
     .paginator {
       margin-top: 20px;
+      &.pg-top {
+        box-sizing: border-box;
+        display: block;
+        padding-right: 100px;
+        text-align: right;
+        width: 100%;
+        @include media-mobile { display: none; }
+      }
     }
   }
 </style>
