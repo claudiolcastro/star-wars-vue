@@ -14,21 +14,21 @@ const fetchChatacters = async (page) => {
     return data;
   } catch (e) {
     console.error(e);
+    return null;
   }
 };
 
-const fetchStarships = async (id) => {
-  const URL = 'https://swapi.co/api';
-
+const fetchInfo = async (url) => {
   try {
-    const { data } = await axios.get(`${URL}/starchips/${id}`, {
+    const { data } = await axios.get(url, {
     });
 
     return data;
   } catch (e) {
     console.error(e);
+    return null;
   }
 };
 
 
-export { fetchChatacters, fetchStarships };
+export { fetchChatacters, fetchInfo };
