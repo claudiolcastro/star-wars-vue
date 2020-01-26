@@ -30,5 +30,24 @@ const fetchInfo = async (url) => {
   }
 };
 
+const fetchDuckDuckSearch = async (q) => {
+  const URL = 'https://api.duckduckgo.com';
 
-export { fetchChatacters, fetchInfo };
+  try {
+    const { data } = await axios.get(URL, {
+      params: {
+        q,
+        format: 'json',
+        pretty: 1,
+      },
+    });
+
+    return data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+
+export { fetchChatacters, fetchInfo, fetchDuckDuckSearch };

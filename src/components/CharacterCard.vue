@@ -1,7 +1,7 @@
 <template>
   <div class="character-card">
     <dir class="char-image">
-      <img src="" :alt="character.name">
+      <img :src="charImage" :alt="character.name">
     </dir>
 
     <b class="char-name">
@@ -42,7 +42,7 @@
 <script>
 import { mapActions } from 'vuex';
 
-import { fetchInfo } from '../repository/api';
+import { fetchInfo, fetchDuckDuckSearch } from '../repository/api';
 
 export default {
   name: 'CharacterCard',
@@ -59,6 +59,7 @@ export default {
       starships: null,
       films: null,
       planet: null,
+      charImage: null,
       showFilms: false,
       showStarships: false,
     };
@@ -110,6 +111,13 @@ export default {
       this.planet = result;
     },
 
+    async getCharImage(name) {
+      const formatedName = name.replace('-', '');
+      console.log(formatedName);
+      const { Image } = await fetchDuckDuckSearch(formatedName);
+      this.charImage = Image;
+    },
+
     toggleFilms() {
       this.showStarships = false;
       this.showFilms = !this.showFilms;
@@ -125,6 +133,7 @@ export default {
     this.getPlanet();
     this.getFilms();
     this.getStarships();
+    this.getCharImage(this.character.name);
   },
 };
 </script>
@@ -134,13 +143,24 @@ export default {
     border: 1px solid $black;
     border-radius: 3px;
     color: $white;
-    min-height: 200px;
+    min-height: 440px;
     height: auto;
     padding: 10px 0;
     width: 250px;
 
     .char {
-      &-image {}
+      &-image {
+        background-color: $border-light;
+        height: 220px;
+        margin: 10px auto;
+        padding: 0;
+        width: 180px;
+        img {
+          margin: 0 auto;
+          height: 220px;
+          width: 180px;
+        }
+      }
 
       &-name {
         display: block;
@@ -177,6 +197,7 @@ export default {
           transition: max-height 0.5s;
           &.showFilms, &.showStarships {
             max-height: 300px;
+            overflow: scroll;
           }
 
           li {

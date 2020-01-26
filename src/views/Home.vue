@@ -66,12 +66,14 @@ export default {
     }
 
     .characters-list {
-      display: flex;
       flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
       margin: 35px auto 0 auto;
       width: fit-content;
 
       li {
+        float: left;
         margin: 15px 0 0 15px;
       }
     }
