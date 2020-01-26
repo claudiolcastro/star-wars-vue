@@ -1,7 +1,8 @@
 <template>
   <div class="character-card">
     <dir class="char-image">
-      <img :src="charImage" :alt="character.name">
+      <img v-if="charImage" :src="charImage" :alt="character.name">
+      <img v-if="!charImage" src="../assets/images/sw_logo_img.jpg" :alt="character.name">
     </dir>
 
     <b class="char-name">
@@ -113,9 +114,11 @@ export default {
 
     async getCharImage(name) {
       const formatedName = name.replace('-', '');
-      console.log(formatedName);
-      const { Image } = await fetchDuckDuckSearch(formatedName);
-      this.charImage = Image;
+      const result = await fetchDuckDuckSearch(formatedName);
+
+      if (result) {
+        this.charImage = result.Image;
+      }
     },
 
     toggleFilms() {
