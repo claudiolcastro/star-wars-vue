@@ -143,25 +143,25 @@ export default {
 
 <style lang="scss" scoped>
   .character-card {
-    border: 1px solid $black;
+    background-color: #484848;
     border-radius: 3px;
     color: $white;
     min-height: 370px;
     height: auto;
-    padding: 10px 0;
-    width: 250px;
+    padding: 0 0 10px 0;
+    width: 200px;
 
     .char {
       &-image {
         background-color: $border-light;
         height: 220px;
-        margin: 10px auto;
+        margin: 0 auto 10px 0;
         padding: 0;
-        width: 180px;
+        width: 100%;
         img {
           margin: 0 auto;
           height: 220px;
-          width: 180px;
+          width: 100%;
         }
       }
 

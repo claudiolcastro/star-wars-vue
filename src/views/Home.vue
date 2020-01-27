@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="stars"></div>
     <img src="https://img.icons8.com/color/48/000000/lightsaber.png">
     <h1>Star Wars Characters</h1>
     <img style="transform: rotate(270deg)" src="https://img.icons8.com/color/48/000000/lightsaber.png">
@@ -67,10 +68,25 @@ export default {
 
 <style lang="scss" scoped>
   .home {
-    background-color: #424242;
     padding-bottom: 30px;
     min-height: 500px;
     width: 100%;
+
+    .stars {
+      background: url(http://www.script-tutorials.com/demos/360/images/stars.png) top center $black;
+    }
+
+    .stars {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+    }
 
     h1 {
       color: $yellow;
